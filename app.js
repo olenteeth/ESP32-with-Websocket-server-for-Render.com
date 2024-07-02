@@ -4,8 +4,7 @@ const WebSocket = require('ws');
 const app = express();
 const server = require('http').Server(app);
 const wss = new WebSocket.Server({ server:server });
-
-app.use('/',express.static('public'));
+var PORT = process.env.PORT || 80;
 
 wss.on('connection', function connection(nhantin) {
   console.log("Ayo co nguoi moi vao");
@@ -21,7 +20,9 @@ wss.on('connection', function connection(nhantin) {
   wss.on('close', function close() {
     console.log('Client disconnected');
   });
-
-server.listen(80, function listening() {
-  console.log('Server started on port 80');
+  
+app.get('/', function(req, res){
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
+
+server.listen(PORT, () => console.log(PORT))
