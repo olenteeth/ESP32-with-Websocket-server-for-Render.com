@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control LEDs</title>
+    <script>
+        // Mở kết nối WebSocket
+        let ws = new WebSocket('ws://nhom7.ddns.net');
+        function controlLED(led, state) {
+            ws.send(led + '_' + state + '_ESP32');
+        }
+    </script>
+</head>
+<body>
+    <h1>Control LEDs</h1>
+    <button onclick="controlLED('LED1', 'ON')">LED 1 ON</button>
+    <button onclick="controlLED('LED1', 'OFF')">LED 1 OFF</button>
+    <button onclick="controlLED('LED2', 'ON')">LED 2 ON</button>
+    <button onclick="controlLED('LED2', 'OFF')">LED 2 OFF</button>
+    <button onclick="controlLED('LED3', 'ON')">LED 3 ON</button>
+    <button onclick="controlLED('LED3', 'OFF')">LED 3 OFF</button>
+    <button onclick="controlLED('LED4', 'ON')">LED 4 ON</button>
+    <button onclick="controlLED('LED4', 'OFF')">LED 4 OFF</button>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Data</title>
+    <script>
+      // Mở kết nối WebSocket
+      var socket = new WebSocket('ws://nhom7.ddns.net');
+    
+      // Xử lý khi kết nối mở
+      socket.onopen = function(event) {
+        console.log('WebSocket opened');
+      };
+    
+      // Xử lý khi nhận được dữ liệu từ server
+      socket.onmessage = function(event) {
+        try {
+      var data = JSON.parse(event.data);
+      if (data && typeof data === 'object') {
+        if (data.temperature !== undefined && data.humidity !== undefined) {
+          document.getElementById('temperature').innerText = 'Nhiệt độ: ' + data.temperature + '°C';
+          document.getElementById('humidity').innerText = 'Độ ẩm: ' + data.humidity + '%';
+        } else {
+          console.error('lỗi xử lý json');
+        }
+      } else {
+        console.error('lỗi xử lý json');
+      }
+    } catch (error) {
+      console.error('lỗi:', error);
+    }
+      };
+    
+      // Xử lý khi kết nối đóng
+      socket.onclose = function(event) {
+        console.log('WebSocket closed');
+      };
+    </script>
+    </head>
+    <body>
+      <h1>Dữ liệu nhiệt độ và độ ẩm</h1>
+      <div id="temperature">Nhiệt độ:</div>
+      <div id="humidity">Độ ẩm:</div>
+    </body>
+</html>
