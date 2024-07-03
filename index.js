@@ -22,7 +22,7 @@ wss.on('connection', function connection(nhantin) {
   });
   
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join('index.html'));
 });
 
 server.listen(PORT, () => console.log(PORT))
