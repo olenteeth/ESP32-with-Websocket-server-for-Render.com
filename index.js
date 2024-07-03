@@ -4,7 +4,7 @@ const WebSocket = require('ws');
 const app = express();
 const server = require('http').Server(app);
 const wss = new WebSocket.Server({ server:server });
-var PORT = process.env.PORT || 80;
+var PORT = process.env.PORT || 3000;
 
 app.use('/',express.static('public'));
 
@@ -23,4 +23,4 @@ wss.on('connection', function connection(nhantin) {
     console.log('Client disconnected');
   });
 
-server.listen(PORT, () => console.log(PORT))
+server.listen(PORT, () => console.log(`Listening on ${PORT}`));
