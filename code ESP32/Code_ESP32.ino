@@ -1,3 +1,11 @@
+/*
+Adafruit sensor 1.1.14
+DHT sensor library by Adafruit 1.4.6
+WebSockets by Markus Sattler 2.4.1
+ArduinoJson by Benoit Blanchon 7.0.4
+The remaining libraries are buit-in libraries
+*/
+
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiMulti.h>
@@ -32,7 +40,7 @@ unsigned long timeloop=0;
 
 //use cmd
 //openssl s_client -showcerts -connect <link web>:443
-// CA pass here is example of Websocket library
+// CA-pass here is example of Websocket library
 const char ENDPOINT_CA_CERT[] PROGMEM = R"EOF(
 ----BEGIN CERTIFICATE-----
 MIIEkjCCA3qgAwIBAgIQCgFBQgAAAVOFc2oLheynCDANBgkqhkiG9w0BAQsFADA/MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT
