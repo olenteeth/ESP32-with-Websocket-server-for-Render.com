@@ -28,42 +28,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebSocket Data</title>
     <script>
-      // Mở kết nối WebSocket
       var socket = new WebSocket('wss://web-ui-ig72.onrender.com/');
     
-      // Xử lý khi kết nối mở
       socket.onopen = function(event) {
         console.log('WebSocket opened');
       };
     
-      // Xử lý khi nhận được dữ liệu từ server
       socket.onmessage = function(event) {
         try {
       var data = JSON.parse(event.data);
       if (data && typeof data === 'object') {
         if (data.temperature !== undefined && data.humidity !== undefined) {
-          document.getElementById('temperature').innerText = 'Nhiệt độ: ' + data.temperature + '°C';
-          document.getElementById('humidity').innerText = 'Độ ẩm: ' + data.humidity + '%';
+          document.getElementById('temperature').innerText = 'Temperature: ' + data.temperature + '°C';
+          document.getElementById('humidity').innerText = 'Humidity: ' + data.humidity + '%';
         } else {
-          console.error('lỗi xử lý json');
+          console.error('Json process fail');
         }
       } else {
-        console.error('lỗi xử lý json');
+        console.error('Json process fail');
       }
     } catch (error) {
-      console.error('lỗi:', error);
+      console.error('error:', error);
     }
       };
     
-      // Xử lý khi kết nối đóng
       socket.onclose = function(event) {
         console.log('WebSocket closed');
       };
     </script>
     </head>
     <body>
-      <h1>Dữ liệu nhiệt độ và độ ẩm</h1>
-      <div id="temperature">Nhiệt độ:</div>
-      <div id="humidity">Độ ẩm:</div>
+      <h1>Temperature and Humidity</h1>
+      <div id="temperature">Temperature:</div>
+      <div id="humidity">Humidity:</div>
     </body>
 </html>
