@@ -8,10 +8,10 @@ var PORT = process.env.PORT || 3000;
 
 app.use('/',express.static('public'));
 
-wss.on('connection', function connection(nhantin) {
+wss.on('connection', function connection(message) {
   console.log("new conection");
 
-  nhantin.on('message', function incoming(test){
+  message.on('message', function incoming(test){
     console.log("message from client:" + test);
       wss.clients.forEach(function(client){
         client.send(String(test));
