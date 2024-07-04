@@ -25,7 +25,7 @@ const char *websocket_server = "link_on_render";
 const int websocket_port = 443;
 const char *url = "/";
 int status=0, status1=2, status2=4, status3=6, temp=0;
-// Tạo dữ liệu JSON
+
 DynamicJsonDocument jsonDoc(128);
 float temperature, humidity;
 unsigned long timeloop=0;
