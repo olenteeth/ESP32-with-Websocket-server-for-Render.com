@@ -21,8 +21,8 @@ WebSocketsClient webSocket;
 WiFiMulti WiFiMulti;
 const char *ssid = "username";
 const char *password = "password";
-const char *websocket_server = "link_on_render"; 
-const int websocket_port = 443;
+const char *websocket_server = "web-ui-ig72.onrender.com"; //link web deploy with render 
+const int websocket_port = 443; //80 for http, 443 for https
 const char *url = "/";
 int status=0, status1=2, status2=4, status3=6, temp=0;
 
