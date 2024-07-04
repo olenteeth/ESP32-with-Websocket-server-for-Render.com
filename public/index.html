@@ -6,7 +6,7 @@
     <title>Control LEDs</title>
     <script>
         // Mở kết nối WebSocket
-        let ws = new WebSocket('wss://web-ui-vert.vercel.app/');
+        let ws = new WebSocket('ws://web-ui-vert.vercel.app/');
         function controlLED(led, state) {
             ws.send(led + '_' + state + '_ESP32');
         }
@@ -29,7 +29,7 @@
     <title>WebSocket Data</title>
     <script>
       // Mở kết nối WebSocket
-      var socket = new WebSocket('wss://web-ui-vert.vercel.app/');
+      var socket = new WebSocket('ws://web-ui-vert.vercel.app/');
     
       // Xử lý khi kết nối mở
       socket.onopen = function(event) {
